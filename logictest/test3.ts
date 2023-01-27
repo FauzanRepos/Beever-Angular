@@ -23,7 +23,30 @@ OUTPUT:
 */
 
 function jumlahTabungan(_listHarga, _history) {
-    // Write your code here
+  // Write your code here
+
+  var buyHistory = _history.split('.');
+  var tabungan = {};
+  var totalTabungan = 0;
+  for (var i = 0; i < buyHistory.length; i++) {
+    var pembelian = buyHistory[i].split('-');
+    var hari = pembelian[0];
+    var listPembelian = pembelian[1].split(',');
+    var harga = 0;
+    for (var j = 0; j < listPembelian.length; j++) {
+      var makanan = listPembelian[j];
+      for (var k = 0; k < _listHarga.length; k++) {
+        if (_listHarga[k].nama === makanan) {
+          harga += _listHarga[k].harga;
+          break;
+        }
+      }
+    }
+    tabungan[hari] = 10000 - harga;
+    totalTabungan += tabungan[hari];
+  }
+  tabungan["TotalTabungan"] = totalTabungan;
+  return tabungan;
 }
 
 var hargaMakanan = [

@@ -7,3 +7,7 @@ var words = 'beever'
 // beev
 // beeve
 // beever
+
+for (var i = 1; i <= words.length; i++) {
+    console.log(words.substring(0, i));
+}
